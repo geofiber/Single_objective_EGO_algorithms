@@ -3,7 +3,7 @@ This is the MATLAB of the pseudo EI criterion for parallel EGO algorithm describ
 
 The pseudo EI criterion is an extendtion of the standard EI criterion [2] which allows the EGO algorithm to select multiple design points in each iteration (cycle). Then these candidate points can be evaluated in parallel that may save some wall-clock time.
 
-The dace toolbox [2] is used for building the Kriging model in the implementation.
+The dace toolbox [3] is used for building the Kriging model in the implementation.
 
 Reference:
 
