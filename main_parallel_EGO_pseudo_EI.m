@@ -26,8 +26,10 @@ clearvars;
 addpath('dace');
 addpath('test_problem')
 %--------------------------------------------------------------------------
-% setting of the problem
-fun_name = 'Sixhump';
+% you can choose from ¡®Sixhump¡¯, 'Branin', 'Sasena', 'GoldPrice',
+% 'Shekel5', 'Shekel7', 'Shekel10', 'Hartman3', 'Hartman6', 'Sphere',
+% 'SumSquare', 'Rosenbrock'
+fun_name = 'GoldPrice';
 % the number of initial design points
 num_initial_sample = 50;
 % the number of total allowed design points
