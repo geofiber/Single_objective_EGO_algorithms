@@ -61,7 +61,7 @@ fprintf(' iteration: %d, evaluation: %d, current best solution: %f, real optimum
 % the iteration
 while evaluation < num_total_sample
     % the Expected Improvement criterion
-    infill_criterion = @(x)standard_EI(x,kriging_model,f_min);
+    infill_criterion = @(x)Infill_Standard_EI(x,kriging_model,f_min);
     % find the point with the highest EI value using ga algorithm
     [best_x,best_EI] = ga(infill_criterion,num_vari,[],[],[],[],design_space(1,:),design_space(2,:),[],ga_option);    
     % evaluating the candidate with the real function

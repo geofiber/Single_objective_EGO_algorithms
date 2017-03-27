@@ -1,4 +1,4 @@
-function obj=pseudo_EI(x, Kriging_model, f_min, point_added)
+function obj=Infill_Pseudo_EI(x, Kriging_model, f_min, point_added)
 %--------------------------------------------------------------------------
 % the pseudo EI criterion
 %--------------------------------------------------------------------------
@@ -20,9 +20,7 @@ else
 end
 s=sqrt(max(0,mse));
 % calcuate the EI value
-EI=(f_min-yp).*gausscdf((f_min-yp)./s)+s.*gausspdf((f_min-yp)./s);
-
-
+EI=(f_min-yp).*Gaussian_CDF((f_min-yp)./s)+s.*Gaussian_PDF((f_min-yp)./s);
 %--------------------------------------------------------------------------
 % if this is not the first infill point
 if ~isempty(point_added) 
@@ -34,21 +32,11 @@ if ~isempty(point_added)
     % the Pseudo EI matrix
     EI=EI.*prod(1-correlation,1);
 end
-
-
 % the genetic algorithm tries to minimize the objective
 obj=-EI;
 
 end
 
-
-function y=gausscdf(x)
-y=0.5*(1+erf(x/sqrt(2)));
-end
-
-function y=gausspdf(x)
-y=1/sqrt(2*pi)*exp(-x.^2/2);
-end
 
 
 
