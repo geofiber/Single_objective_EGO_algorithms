@@ -12,7 +12,6 @@
 %Available at: http://www2.imm.dtu.dk/~hbn/dace/.
 %--------------------------------------------------------------------------
 % Zhan Dawei (zhandawei@hust.edu.cn)
-% 2017.03.13
 % This program is free software; you can redistribute it and/or
 % modify it. This program is distributed in the hope that it will be useful,
 % but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,11 +25,11 @@ addpath('test_problem')
 % you can choose from ¡®Sixhump¡¯, 'Branin', 'Sasena', 'GoldPrice',
 % 'Shekel5', 'Shekel7', 'Shekel10', 'Hartman3', 'Hartman6', 'Sphere',
 % 'SumSquare', 'Rosenbrock'
-fun_name = 'Branin';
+fun_name = 'GoldPrice';
 % the number of initial design points
 num_initial_sample = 20;
 % the number of total allowed design points
-num_total_sample = 60;
+num_total_sample = 200;
 %--------------------------------------------------------------------------
 % settings of the genetic algorithm
 ga_population_size = 100;
@@ -38,6 +37,8 @@ ga_generation = 100;
 ga_crossover_fraction = 0.9;
 ga_option = gaoptimset( 'PopulationSize',ga_population_size, 'Generations',ga_generation,...
                                                    'StallGenLimit',ga_generation, 'CrossoverFraction',0.9, 'Display', 'off');
+% the genetic algorithm is repeated n times and the best solution is taken
+ga_repeat_time = 4;    
 %--------------------------------------------------------------------------
  % get the information of the test problem                                           
 [num_vari,design_space,optimum] = Test_Function(fun_name);
@@ -56,14 +57,21 @@ iteration = 0;
 evaluation = size(sample_x,1);
 % print the current information to the screen
 fprintf(' iteration: %d, evaluation: %d, current best solution: %f, real optimum: %f\n', iteration, evaluation, f_min, optimum);
-
 %--------------------------------------------------------------------------
 % the iteration
 while evaluation < num_total_sample
     % the Expected Improvement criterion
     infill_criterion = @(x)Infill_Standard_EI(x,kriging_model,f_min);
     % find the point with the highest EI value using ga algorithm
-    [best_x,best_EI] = ga(infill_criterion,num_vari,[],[],[],[],design_space(1,:),design_space(2,:),[],ga_option);    
+    % and we run the ga optimizer ga_repeat_time times and take the best
+    % result
+    best_x_temp = zeros(ga_repeat_time, num_vari);
+    best_EI_temp = zeros(ga_repeat_time , 1);
+    for ii = 1 : ga_repeat_time
+        [best_x_temp(ii,:), best_EI_temp(ii,:)] = ga(infill_criterion,num_vari,[],[],[],[],design_space(1,:),design_space(2,:),[],ga_option);
+    end
+    [best_EI, ind] = max(-best_EI_temp);
+    best_x = best_x_temp(ind,:);
     % evaluating the candidate with the real function
     best_y = feval(fun_name,best_x);    
     % add the new point to design set
