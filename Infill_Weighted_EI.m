@@ -1,4 +1,4 @@
-function obj=Infill_Weighted_EI(x, Kriging_model, f_min, yp_min, s_max, weight)
+function obj=Infill_Weighted_EI(x, Kriging_model, f_min, weight)
 %--------------------------------------------------------------------------
 % the DACE toolbox of  Lophaven et al. (2002)  is used to predict value
 %--------------------------------------------------------------------------
@@ -19,10 +19,10 @@ s=sqrt(max(0,mse));
 EI1 = (f_min-yp).*Gaussian_CDF((f_min-yp)./s);
 EI2 = s.*Gaussian_PDF((f_min-yp)./s);
 
-WEI = max([weight *(EI1 - (f_min - yp_min)), (1-weight) * (EI2 - s_max)]);
+weighted_EI = weight * EI1 + (1-weight) * EI2;
 
 % the genetic algorithm tries to minimize the objective
-obj=WEI;
+obj=- weighted_EI;
 
 end
 
