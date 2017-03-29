@@ -29,7 +29,7 @@ addpath('test_problem')
 % you can choose from ¡®Sixhump¡¯, 'Branin', 'Sasena', 'GoldPrice',
 % 'Shekel5', 'Shekel7', 'Shekel10', 'Hartman3', 'Hartman6', 'Sphere',
 % 'SumSquare', 'Rosenbrock'
-fun_name = 'GoldPrice';
+fun_name = 'Sasena';
 % the number of initial design points
 num_initial_sample = 20;
 % the number of total allowed design points
@@ -62,7 +62,6 @@ iteration = 0;
 evaluation = size(sample_x,1);
 % print the current information to the screen
 fprintf(' iteration: %d, evaluation: %d, current best solution: %f: real optimum: %f\n', iteration, evaluation, f_min, optimum);
-
 %--------------------------------------------------------------------------
 % the iteration
 while evaluation < num_total_sample
@@ -74,7 +73,6 @@ while evaluation < num_total_sample
     best_x = zeros(num_candidate,num_vari);
     best_EI = zeros(num_candidate, 1);
     point_added = [];
-    
     %--------------------------------------------------------------------------
     % find the candidates based on pseudo EI criterion
     for ii = 1: num_candidate
