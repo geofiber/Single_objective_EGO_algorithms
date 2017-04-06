@@ -85,7 +85,6 @@ while evaluation < num_total_sample
     end
     % evaluating the candidate with the real function
     best_y = feval(fun_name,best_x);
-    
     %--------------------------------------------------------------------------
     % add points and rebuild Kriging model
     % add the new point to design set
