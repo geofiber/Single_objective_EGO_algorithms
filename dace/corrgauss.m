@@ -17,20 +17,16 @@ function  [r, dr] = corrgauss(theta, d)
 % dr    :  m*n matrix with the Jacobian of r at x. It is
 %          assumed that x is given implicitly by d(i,:) = x - S(i,:), 
 %          where S(i,:) is the i'th design site. 
-
 % hbn@imm.dtu.dk  
 % Last update June 2, 2002
+%
+% make the code faster for MATLAB2016b
+% zhandawei@hust.edu.cn
 
-[m n] = size(d);  % number of differences and dimension of data
-if  length(theta) == 1
-  theta = repmat(theta,1,n);
-elseif  length(theta) ~= n
-  error(sprintf('Length of theta must be 1 or %d',n))
-end
-
-td = d.^2 .* repmat(-theta(:).',m,1);
+[m, n] = size(d);  % number of differences and dimension of data
+td = d.^2 .* (-theta(:)');
 r = exp(sum(td, 2));
 
 if  nargout > 1
-  dr = repmat(-2*theta(:).',m,1) .* d .* repmat(r,1,n);
+  dr = (ones(m,1)*(-2*theta(:).')) .* d .* (r*ones(1,n));
 end
