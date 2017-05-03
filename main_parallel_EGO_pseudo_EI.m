@@ -17,6 +17,8 @@
 % Available at: http://www2.imm.dtu.dk/~hbn/dace/.
 %--------------------------------------------------------------------------
 % Zhan Dawei (zhandawei@hust.edu.cn)
+% 2017.05.03, use the pso optimizer 
+%--------------------------------------------------------------------------
 % This program is free software; you can redistribute it and/or
 % modify it. This program is distributed in the hope that it will be useful,
 % but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -29,21 +31,16 @@ addpath('test_problem')
 % you can choose from ¡®Sixhump¡¯, 'Branin', 'Sasena', 'GoldPrice',
 % 'Shekel5', 'Shekel7', 'Shekel10', 'Hartman3', 'Hartman6', 'Sphere',
 % 'SumSquare', 'Rosenbrock'
-fun_name = 'Sasena';
+fun_name = 'GoldPrice';
 % the number of initial design points
 num_initial_sample = 20;
 % the number of total allowed design points
 num_total_sample = 100;
 % the number of points selected in each iteration (cycle)
-num_select = 10;
+num_select = 2;
 %--------------------------------------------------------------------------
-% settings of the genetic algorithm
-ga_population_size = 100;
-ga_generation = 100;
-ga_crossover_fraction = 0.9;
-ga_option = gaoptimset( 'PopulationSize',ga_population_size, 'Generations',ga_generation,...
-                                                   'StallGenLimit',ga_generation, 'CrossoverFraction',ga_crossover_fraction, 'Display', 'off');
-    
+% this optimizer us the particle swarm optimization implemented in MATLAB 2016b
+options=optimoptions('particleswarm','SwarmSize',100,'MaxIterations',100,'MaxStallIterations',100,'Display','off', 'UseVectorized', true );
  %--------------------------------------------------------------------------
  % get the information of the test problem
 [num_vari,design_space,optimum] = Test_Function(fun_name);                                               
@@ -79,7 +76,7 @@ while evaluation < num_total_sample
         % the pseudo Expected Improvement criterion
         infill_criterion = @(x)Infill_Pseudo_EI(x, Kriging_model, f_min, point_added);
         % find the point with the highest EI value using ga algorithm
-        [best_x(ii,:),best_EI(ii,:)] = ga(infill_criterion,num_vari,[],[],[],[],design_space(1,:),design_space(2,:),[],ga_option);
+        [best_x(ii,:),best_EI(ii,:)] = particleswarm(infill_criterion, num_vari,design_space(1,:),design_space(2,:),options);   
         % update point_added
         point_added = best_x(1:ii,:);
     end
