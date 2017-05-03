@@ -9,14 +9,10 @@ function obj=Infill_Standard_EI(x, Kriging_model, f_min)
 %Available at: http://www2.imm.dtu.dk/~hbn/dace/.
 %--------------------------------------------------------------------------
 % get the Kriging prediction and variance
-if size(x,1)==1
-    [yp,~,mse] = predictor(x,Kriging_model);
-else
-    [yp,mse] = predictor(x,Kriging_model);
-end
+[y,mse] = predictor(x,Kriging_model);
 s=sqrt(max(0,mse));
 % calcuate the EI value
-EI=(f_min-yp).*Gaussian_CDF((f_min-yp)./s)+s.*Gaussian_PDF((f_min-yp)./s);
+EI=(f_min-y).*Gaussian_CDF((f_min-y)./s)+s.*Gaussian_PDF((f_min-y)./s);
 
 % the genetic algorithm tries to minimize the objective
 obj=-EI;

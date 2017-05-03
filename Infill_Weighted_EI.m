@@ -9,18 +9,12 @@ function obj=Infill_Weighted_EI(x, Kriging_model, f_min, weight)
 %Available at: http://www2.imm.dtu.dk/~hbn/dace/.
 %--------------------------------------------------------------------------
 % get the Kriging prediction and variance
-if size(x,1)==1
-    [yp,~,mse] = predictor(x,Kriging_model);
-else
-    [yp,mse] = predictor(x,Kriging_model);
-end
+[y,mse] = predictor(x,Kriging_model);
 s=sqrt(max(0,mse));
 % calcuate the EI value
-EI1 = (f_min-yp).*Gaussian_CDF((f_min-yp)./s);
-EI2 = s.*Gaussian_PDF((f_min-yp)./s);
-
+EI1 = (f_min-y).*Gaussian_CDF((f_min-y)./s);
+EI2 = s.*Gaussian_PDF((f_min-y)./s);
 weighted_EI = weight * EI1 + (1-weight) * EI2;
-
 % the genetic algorithm tries to minimize the objective
 obj=- weighted_EI;
 
