@@ -10,7 +10,7 @@ The standard EI criterion might not give the best tradeoff between global explor
 The parallel efficient global optimization (EGO) algorithm is an extendtion of the standard EGO criterion [3] which allows the EGO algorithm to select multiple design points in each iteration (cycle). Then these candidate points can be evaluated in parallel that may save some wall-clock time. The pseudo EI criterion is used in the algorithm to select multiple design points in each cycle. The detailed desciption of the pseudo EI criterion can be referred to [3]. The dace toolbox [4] is used for building the Kriging models in the implementations.
 
 ### Reference:
-1. Jones, D.R., Schonlau, M., Welch, W.J.: Efficient global optimization of expensive black-box functions. Journal of Global Optimization 13(4), 455-492 (1998).
-2. A. Sóbester, S. Leary, A. Keane, On the Design of Optimization Strategies Based on Global Response Surface Approximation Models, Journal of Global Optimization 33(1) (2005) 31-59.
-2. D. Zhan, J. Qian, Y. Cheng, Pseudo expected improvement criterion for parallel, Journal of Global Optimization. doi:10.1007/s10898-016-0484-7
+1. Jones, D.R., Schonlau, M., Welch, W.J.: Efficient global optimization of expensive black-box functions. Journal of Global Optimization, 13(4), 455-492 (1998).
+2. A. Sóbester, S. Leary, A. Keane, On the Design of Optimization Strategies Based on Global Response Surface Approximation Models, Journal of Global Optimization, 33(1) (2005) 31-59.
+2. D. Zhan, J. Qian, Y. Cheng, Pseudo expected improvement criterion for parallel, Journal of Global Optimization, 2017, 68 (3): 641-662. 
 3. Lophaven SN, Nielsen HB, and Sodergaard J, DACE - A MATLAB Kriging Toolbox, Technical Report IMM-TR-2002-12, Informatics and Mathematical Modelling, Technical University of Denmark, 2002. Available at: http://www2.imm.dtu.dk/projects/dace/.
