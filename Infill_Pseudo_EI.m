@@ -19,14 +19,17 @@ s=sqrt(max(0,mse));
 EI=(f_min-y).*Gaussian_CDF((f_min-y)./s)+s.*Gaussian_PDF((f_min-y)./s);
 %--------------------------------------------------------------------------
 % if this is not the first infill point
-if ~isempty(point_added) 
+if ~isempty(point_added)
     % the scaling of x
     scaled_x = (x - Kriging_model.Ssc(1,:)) ./ Kriging_model.Ssc(2,:);
     scaled_point_added = (point_added - Kriging_model.Ssc(1,:)) ./ Kriging_model.Ssc(2,:);
-    dx = scaled_x - scaled_point_added;
-    correlation = feval(Kriging_model.corr, Kriging_model.theta, dx);
+    correlation = zeros(size(scaled_x,1),size(scaled_point_added,1));
+    for ii =1:size(scaled_point_added,1)
+        dx = scaled_x - scaled_point_added(ii,:);
+        correlation(:,ii) = feval(Kriging_model.corr, Kriging_model.theta, dx);
+    end
     % the Pseudo EI matrix
-    EI=EI.*prod(1-correlation,1);
+    EI=EI.*prod(1-correlation,2);
 end
 % the genetic algorithm tries to minimize the objective
 obj=-EI;

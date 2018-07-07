@@ -31,13 +31,13 @@ addpath('test_problem')
 % you can choose from ¡®Sixhump¡¯, 'Branin', 'Sasena', 'GoldPrice',
 % 'Shekel5', 'Shekel7', 'Shekel10', 'Hartman3', 'Hartman6', 'Sphere',
 % 'SumSquare', 'Rosenbrock'
-fun_name = 'GoldPrice';
+fun_name = 'Hartman6';
 % the number of initial design points
 num_initial_sample = 20;
 % the number of total allowed design points
 num_total_sample = 100;
 % the number of points selected in each iteration (cycle)
-num_select = 2;
+num_select = 5;
 %--------------------------------------------------------------------------
 % this optimizer us the particle swarm optimization implemented in MATLAB 2016b
 options=optimoptions('particleswarm','SwarmSize',100,'MaxIterations',100,'MaxStallIterations',100,'Display','off', 'UseVectorized', true );
