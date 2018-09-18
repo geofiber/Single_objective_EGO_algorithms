@@ -1,4 +1,4 @@
-function obj = Hartman3(x)
+function obj = fun_Hartman3(x)
 %----------------------------------------------------------
 % Hartman 3 Test Function for Nonlinear Optimization
 % Taken from "Towards Global Optimisation 2",edited by L.C.W. Dixon and G.P.

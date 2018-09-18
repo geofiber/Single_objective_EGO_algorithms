@@ -1,4 +1,4 @@
-function obj=Sasena(x)
+function obj = fun_Sasena(x)
 %----------------------------------------------------------
 % Sasena function (called mystery function by Sasena)
 % Sasena, M. J., ¡°Flexibility and Efficiency Enhancements for

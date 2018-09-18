@@ -1,4 +1,4 @@
-function obj=Infill_Standard_EI(x, Kriging_model, f_min)
+function obj = infill_standard_EI(x, Kriging_model, f_min)
 %--------------------------------------------------------------------------
 % the DACE toolbox of  Lophaven et al. (2002)  is used to predict value
 %--------------------------------------------------------------------------
@@ -12,9 +12,8 @@ function obj=Infill_Standard_EI(x, Kriging_model, f_min)
 [y,mse] = predictor(x,Kriging_model);
 s=sqrt(max(0,mse));
 % calcuate the EI value
-EI=(f_min-y).*Gaussian_CDF((f_min-y)./s)+s.*Gaussian_PDF((f_min-y)./s);
-
-% the genetic algorithm tries to minimize the objective
+EI=(f_min-y).*gaussian_CDF((f_min-y)./s)+s.*gaussian_PDF((f_min-y)./s);
+% this EI needs to be maximized
 obj=-EI;
 
 end
