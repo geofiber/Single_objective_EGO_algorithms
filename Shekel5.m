@@ -1,4 +1,4 @@
-function obj = fun_Shekel5(x)
+function obj = Shekel5(x)
 % this is the shekel function when m = 5.
 % the design space is x_i = [0, 10], for i = 1,2,3,4
 % the global optimum is x_opt = [4,4,4,4]

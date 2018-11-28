@@ -1,4 +1,4 @@
-function obj = fun_Branin(x)
+function obj = Branin(x)
 %------------------------------------------------
 % Branin Test Function for Nonlinear Optimization
 % Taken from "Towards Global Optimisation 2",edited by L.C.W. Dixon and G.P.

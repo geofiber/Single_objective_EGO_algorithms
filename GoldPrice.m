@@ -1,4 +1,4 @@
-function obj = fun_GoldPrice(x)
+function obj = GoldPrice(x)
 %----------------------------------------------------------
 % Goldstein-Price Test Function for Nonlinear Optimization
 % Taken from "Towards Global Optimisation 2",edited by L.C.W. Dixon and G.P.

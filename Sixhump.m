@@ -1,4 +1,4 @@
-function obj = fun_Sixhump(x)
+function obj = Sixhump(x)
 %--------------------------------------------------------
 % 6-Hump Camel Test Function for Nonlinear Optimization
 %
