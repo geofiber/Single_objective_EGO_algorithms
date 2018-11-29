@@ -5,7 +5,6 @@
 3. Both the EI and PEI criteria are maximized by DE [4] algorithm..
 
 ### Reference:
-<<<<<<< HEAD
 1. Jones, D.R., Schonlau, M., Welch, W.J.: Efficient global optimization of expensive black-box functions. Journal of Global Optimization, 13(4):455-492 (1998).
 2. D. Zhan, J. Qian, Y. Cheng, Pseudo expected improvement criterion for parallel, Journal of Global Optimization, 68(3):641-662 (2017). 
 3. Lophaven SN, Nielsen HB, and Sodergaard J, DACE - A MATLAB Kriging Toolbox, Technical Report IMM-TR-2002-12, Informatics and Mathematical Modelling, Technical University of Denmark, 2002. Available at: http://www2.imm.dtu.dk/projects/dace/.
