@@ -34,7 +34,7 @@ clearvars; close all;
 % setting of the problem
 % you can choose from ¡®Sixhump¡¯, 'Branin', 'Sasena', 'GoldPrice',
 % 'Shekel5', 'Shekel7', 'Shekel10', 'Hartman3', 'Hartman6'
-fun_name = 'Shekel5';
+fun_name = 'GoldPrice';
 % get the information of the test problem
 switch fun_name
     case 'Sixhump'
@@ -60,18 +60,18 @@ switch fun_name
 end
 %--------------------------------------------------------------------------
 % the number of initial design points
-num_initial_sample = 20;
+num_initial = 20;
 % the number of total allowed design points
-max_evaluation = 100;
+max_evaluation = 200;
 % the number of points selected in each iteration (cycle)
 num_q = 5;
 %--------------------------------------------------------------------------
 % the 0th iteration
 % initial design points using Latin hypercube sampling method
-sample_x = design_space(1,:) + (design_space(2,:)-design_space(1,:)).*lhsdesign(num_initial_sample,num_vari,'criterion','maximin','iterations',1000);
+sample_x = repmat(design_space(1,:),num_initial,1) + repmat(design_space(2,:)-design_space(1,:),num_initial,1).*lhsdesign(num_initial,num_vari,'criterion','maximin','iterations',1000);
 sample_y = feval(fun_name,sample_x);
 % record the f_min in each iteration
-f_min = zeros(ceil((max_evaluation-num_initial_sample)/num_q)+1,1);
+f_min = zeros(ceil((max_evaluation-num_initial)/num_q)+1,1);
 % the current best solution
 f_min(1) = min(sample_y);
 % the current iteration and evaluation
@@ -93,7 +93,7 @@ while evaluation < max_evaluation
     % find the candidates based on pseudo EI criterion
     for ii = 1: num_k
         % the pseudo Expected Improvement criterion
-        infill_criterion = @(x)infill_pseudo_EI(x, kriging_model, f_min(iteration+1), point_added);
+        infill_criterion = @(x)Infill_Pseudo_EI(x, kriging_model, f_min(iteration+1), point_added);
         % find the point with the highest EI value using DE algorithm
         best_x(ii,:) = DE(infill_criterion, num_vari, design_space(1,:), design_space(2,:), 50, 200);
         % update point_added

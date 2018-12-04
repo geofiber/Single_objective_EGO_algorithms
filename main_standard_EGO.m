@@ -56,16 +56,16 @@ switch fun_name
 end  
  %--------------------------------------------------------------------------
 % the number of initial design points
-num_initial_sample = 20;
+num_initial = 20;
 % the number of total allowed design points
 max_evaluation = 100;
 %--------------------------------------------------------------------------
 % the 0th iteration
 % initial design points using Latin hypercube sampling method
-sample_x = design_space(1,:) + (design_space(2,:)-design_space(1,:)).*lhsdesign(num_initial_sample,num_vari,'criterion','maximin','iterations',1000);
+sample_x = repmat(design_space(1,:),num_initial,1) + repmat(design_space(2,:)-design_space(1,:),num_initial,1).*lhsdesign(num_initial,num_vari,'criterion','maximin','iterations',1000);
 sample_y = feval(fun_name,sample_x);
 % record the f_min in each iteration
-f_min = zeros(max_evaluation - num_initial_sample + 1,1);
+f_min = zeros(max_evaluation - num_initial + 1,1);
 % the current best solution
 f_min(1) = min(sample_y);
 % the current iteration and evaluation
@@ -81,7 +81,7 @@ while evaluation <  max_evaluation
     % build (or rebuild) the initial Kriging model
     kriging_model = dacefit(sample_x,sample_y,'regpoly0','corrgauss',1*ones(1,num_vari),0.001*ones(1,num_vari),1000*ones(1,num_vari));
     % the Expected Improvement criterion
-    infill_criterion = @(x)infill_standard_EI(x,kriging_model,f_min(iteration + 1));
+    infill_criterion = @(x)Infill_Standard_EI(x,kriging_model,f_min(iteration + 1));
     % find the point with the highest EI value using PSO algorithm   
     best_x =  DE(infill_criterion, num_vari, design_space(1,:), design_space(2,:), 50, 200);
     % evaluating the candidate with the real function
