@@ -16,7 +16,7 @@
 %     a practical approach to global optimization: Springer Science & Business Media, 2006.
 %     http://www.icsi.berkeley.edu/~storn/code.html
 %--------------------------------------------------------------------------
-% Zhan Dawei (zhandawei@hust.edu.cn)
+% zhandawei@swjtu{dot}edu{dot}cn
 % 2017.05.03, use the PSO optimizer 
 % 2018.09.18, run PSO optimizer only once for finding EI maximum
 % 2018.11.28  use DE optimizer for finding EI maximum
