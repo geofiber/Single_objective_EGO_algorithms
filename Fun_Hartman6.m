@@ -1,4 +1,4 @@
-function y = Hartman6(x)
+function y = Fun_Hartman6(x)
 %----------------------------------------------------------
 % Hartman 6 Test Function for Nonlinear Optimization
 % Taken from "Towards Global Optimisation 2",edited by L.C.W. Dixon and G.P.

@@ -28,28 +28,26 @@
 %--------------------------------------------------------------------------
 clearvars; close all;
 % setting of the problem
-% you can choose from ¡®Sixhump¡¯, 'Branin', 'Sasena', 'GoldPrice',
-% 'Shekel5', 'Shekel7', 'Shekel10', 'Hartman3', 'Hartman6'
-fun_name = 'Shekel5';
+fun_name = 'Fun_Shekel5';
  % get the information of the test problem
 switch fun_name
-    case 'Sixhump'
+    case 'Fun_Sixhump'
         num_vari=2; design_space=[-2,-2;2,2];                  optimum=-1.031628;
-    case 'Branin'
+    case 'Fun_Branin'
         num_vari=2; design_space=[-5,0;10,15];                 optimum= 0.397887;
-    case 'Sasena'
+    case 'Fun_Sasena'
         num_vari=2;  design_space=[0,0;5,5];                    optimum= -1.4565;
-    case 'GoldPrice'
+    case 'Fun_GoldPrice'
         num_vari=2;  design_space=[-2,-2;2,2];                  optimum=3.0000;
-    case 'Shekel5'
+    case 'Fun_Shekel5'
         num_vari=4; design_space=[0,0,0,0;10,10,10,10];        optimum=-10.1532;
-    case 'Shekel7'
+    case 'Fun_Shekel7'
         num_vari=4; design_space=[0,0,0,0;10,10,10,10];         optimum=-10.4029;
-    case 'Shekel10'
+    case 'Fun_Shekel10'
         num_vari=4;   design_space=[0,0,0,0;10,10,10,10];       optimum=-10.5364;
-    case 'Hartman3'
+    case 'Fun_Hartman3'
         num_vari=3;   design_space=[0,0,0;1,1,1];               optimum=-3.8628;
-    case 'Hartman6'
+    case 'Fun_Hartman6'
         num_vari=6;  design_space=[0,0,0,0,0,0;1,1,1,1,1,1];    optimum= -3.3224;
     otherwise
         error('objective function is not defined!')
