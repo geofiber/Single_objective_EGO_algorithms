@@ -26,7 +26,7 @@
 %--------------------------------------------------------------------------
 clearvars;close all;
 % settings of the problem
-fun_name = 'Fun_Hesse';
+fun_name = 'Fun_Welded_Beam';
 % get the information of the test problem
 switch fun_name
     case 'Fun_Two_Member_Frame'
@@ -90,10 +90,6 @@ while evaluation < max_evaluation
         end
         % find the candidate by maximizing the infill criterion
         [best_x(ii,:),best_EI] = DE(infill_criterion, num_vari, design_space(1,:), design_space(2,:), 100, 100);
-        % check the distance between the selected points and exited points
-        if min(sqrt(sum((best_x(ii,:)-[sample_x;point_added]).^2,2)))<1E-8
-            best_x(ii,:) = particleswarm(@(x)Infill_Maximal_Distance(x, [sample_x;point_added]), num_vari, design_space(1,:), design_space(2,:), options);
-        end
         point_added = best_x(1:ii,:);
     end
     % evalaute the candidate points in parallel

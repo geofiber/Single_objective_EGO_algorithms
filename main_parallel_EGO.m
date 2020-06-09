@@ -11,7 +11,7 @@
 %     expensive black-box functions. Journal of Global Optimization 13(4),
 %     455-492 (1998).
 % [2] D. Zhan, J. Qian, Y. Cheng, Pseudo expected improvement criterion for
-%     parallel. Journal of Global Optimization, 68(3):641-662.
+%     parallel EGO algorithm. Journal of Global Optimization, 68(3):641-662.
 % [3] Lophaven SN, Nielsen HB, and Sodergaard J, DACE - A MATLAB Kriging
 %     Toolbox, Technical Report IMM-TR-2002-12, Informatics and Mathematical
 %      Modelling, Technical University of Denmark, 2002.
@@ -32,7 +32,7 @@
 %--------------------------------------------------------------------------
 clearvars; close all;
 % setting of the problem
-fun_name = 'Fun_GoldPrice';
+fun_name = 'Fun_Shekel5';
 % get the information of the test problem
 switch fun_name
     case 'Fun_Sixhump'
