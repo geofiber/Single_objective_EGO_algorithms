@@ -1,18 +1,19 @@
-# The standard and parallel efficient global optimization (EGO) algorithms
+## The standard and parallel efficient global optimization (EGO) algorithms
 
-## 1. The efficient global optimization (EGO) algorithm [1] 
+### 1. The efficient global optimization (EGO) algorithm [1] 
 
 The efficient global optimization (EGO) algorithm [1] is a widely used surrogate-based optimization algorithm for expensive single-objective optimiztion. The EGO algorithm starts by building an initial Kriging model (aka. Gaussion process model) using some initial design points which are often produced by a experiment design method, such as Latin Hypercube Sampling (LHS) method. Then, in each iteration, the point with the highest expected improvement (EI) value is selected  by using a traditional optimization algorithm, which is DE in this implementation. The selected point is evaluated using the real expensive objective function and used to update the Kriging model. In such a way, the EI criterion guides the search toward the optimum of the real problem.
 
 
-## 2. The parallel efficient global optimization (EGO) algorithm [2]
+### 2. The parallel efficient global optimization (EGO) algorithm [2]
 The parallel efficient global optimization (EGO) algorithm [2] is an extendtion of the standard EGO criterion which allows the EGO algorithm to select multiple design points in each iteration (cycle). Then these candidate points can be evaluated in parallel that may save some wall-clock time. The pseudo EI criterion is used in the algorithm to select multiple design points in each cycle. The detailed desciption of the pseudo EI criterion can be referred to [2]. 
  
- ## 3. The parallel constrained efficient global optimization (EGO) algorithm [3]
+### 3. The parallel constrained efficient global optimization (EGO) algorithm [3]
  The parallel constrained efficient global optimization (EGO) algorithm is designed for constrained expensive optimization problems. The PCEI criterion is used to pick up q updating points in each iteration.
  
- ## 4. Notes
+### 4. Notes
 The dace toolbox [4] is used for building the Kriging models in the implementations. 
+
 Both the EI, PEI, PCEI criteria are maximized by DE [5] algorithm.
 
 ### Reference:
