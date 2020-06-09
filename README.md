@@ -16,8 +16,8 @@ The dace toolbox [4] is used for building the Kriging models in the implementati
 Both the EI, PEI, PCEI criteria are maximized by DE [5] algorithm.
 
 ### Reference:
- 1. Jones, D.R., Schonlau, M., Welch, W.J.: Efficient global optimization of expensive black-box functions. Journal of Global Optimization, 13(4):455-492 (1998).
- 2. D. Zhan, J. Qian, Y. Cheng, Pseudo expected improvement criterion for parallel EGO algorithm. Journal of Global Optimization, 68(3):641-662 (2017).
- 3 J. Qian, Y. Cheng, J. Zhang, J. Liu, and D. Zhan. A parallel constrained efficient global optimization algorithm for expensive constrained optimization problems. Engineering Optimization, 2020, DOI:10.1080/0305215X.2020.1722118
- 4. Lophaven SN, Nielsen HB, and Sodergaard J, DACE - A MATLAB Kriging Toolbox, Technical Report IMM-TR-2002-12, Informatics and Mathematical Modelling, Technical University of Denmark, 2002. Available at: http://www2.imm.dtu.dk/projects/dace/.
+1. Jones, D.R., Schonlau, M., Welch, W.J.: Efficient global optimization of expensive black-box functions. Journal of Global Optimization, 13(4):455-492 (1998).
+2. D. Zhan, J. Qian, Y. Cheng, Pseudo expected improvement criterion for parallel EGO algorithm. Journal of Global Optimization, 68(3):641-662 (2017).
+3. J. Qian, Y. Cheng, J. Zhang, J. Liu, and D. Zhan. A parallel constrained efficient global optimization algorithm for expensive constrained optimization problems. Engineering Optimization, 2020, DOI:10.1080/0305215X.2020.1722118
+4. Lophaven SN, Nielsen HB, and Sodergaard J, DACE - A MATLAB Kriging Toolbox, Technical Report IMM-TR-2002-12, Informatics and Mathematical Modelling, Technical University of Denmark, 2002. Available at: http://www2.imm.dtu.dk/projects/dace/.
 5. K. Price, R. M. Storn, and J. A. Lampinen, Differential evolution: a practical approach to global optimization: Springer Science & Business Media, 2006. http://www.icsi.berkeley.edu/~storn/code.html
