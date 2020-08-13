@@ -52,7 +52,7 @@ max_evaluation = 100;
 num_q = 5;
 % the 0th iteration
 % initial design points using Latin hypercube sampling method
-sample_x = lhsdesign(num_initial, num_vari,'criterion','maximin','iteration',1000).*(design_space(2,:) - design_space(1,:)) + design_space(1,:) ;
+sample_x = repmat(design_space(1,:),num_initial,1) + repmat(design_space(2,:)-design_space(1,:),num_initial,1).*lhsdesign(num_initial,num_vari,'criterion','maximin','iterations',1000);
 [sample_y, sample_g] = feval(fun_name, sample_x);
 % the number of total evaluations
 evaluation = size(sample_x,1);
