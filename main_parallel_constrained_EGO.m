@@ -1,6 +1,6 @@
 %--------------------------------------------------------------------------
 % 1. the parallel constrained EGO algorithm [1] is implemented
-%     for solving single-objective unconstrained expensive optimization problems
+%     for solving single-objective constrained expensive optimization problems
 % 2. the DACE toolbox of  Lophaven et al. (2002) [2] is used to build the kriging model
 % 3. The EI criterion is maximized by DE [3] algorithm.
 %--------------------------------------------------------------------------
